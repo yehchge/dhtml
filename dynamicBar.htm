@@ -1,0 +1,55 @@
+<html>
+<head>
+	<title>Dynamic Styles</title>
+	<style type="text/css">
+	<!--
+		.item {font-size:25px; color:yellow; font-family:細明體; background-color:black;width:100px;}
+		.highlight {font-size:25px; color:red; font-family:標楷體; background-color:blue; font-weight:bold;width:100px;cursor:hand;}
+		/*cursor樣式, 可為hand, crosshair, move, wait, help*/
+		#link{font-size:35px; color:white; font-family:標楷體; background-color:black}
+	-->
+	</style>
+</head>
+<body>
+	<div id="link">我的最愛 <br>
+		<span class="item" id="kimo">奇摩站</span>
+		<span class="item" id="yam">蕃薯藤</span>
+		<span class="item" id="msn">微軟MSN</span>
+ 	 </div>
+<script>
+	<!--
+
+//-->
+</script>
+	<script>
+	<!--
+		function rollon() {
+  			if ( event.srcElement.className == "item") {		//注意: className的使用
+     				 event.srcElement.className = "highlight";
+  			}
+		}
+		link.onmouseover = rollon;					//注意: bubbling現象
+								 
+		function rolloff() {
+  			if ( event.srcElement.className == "highlight") {
+     				 event.srcElement.className = "item";
+  			}
+		}
+		link.onmouseout = rolloff;
+
+		function goto(){
+			var site=event.srcElement.id;		
+			var toUrl;
+			switch(site){
+				case "kimo": toUrl="http://www.kimo.com.tw"; break;
+				case "yam": toUrl="http://www.yam.com.tw"; break;
+				case "msn": toUrl="http://www.msn.com "; break;
+			}
+			open(toUrl);
+		}
+		link.onclick=goto;
+	//-->
+	</script>
+
+</body>
+</html>
