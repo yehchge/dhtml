@@ -1,0 +1,35 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>SELECT元件可以上下移動</title>
+<script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.js'></script>
+<script type='text/javascript'>
+$(function() {
+$("#btnMoveUp,#btnMoveDown").click(function() {
+  var $opt = $("#selList option:selected:first");
+  if (!$opt.length) return;
+  if (this.id == "btnMoveUp") $opt.prev().before($opt);
+  else $opt.next().after($opt);
+});
+//按Alt加上下鍵也可以移動
+$("#selList").keydown(function(evt) {
+  if (!evt.altKey) return;
+  var k = evt.which;
+  if (k == 38) { $("#btnMoveUp").click(); return false; }
+  else if (k == 40) { $("#btnMoveDown").click(); return false; }
+});
+});
+</script>
+</head><body>
+<h1><b>可在SELECT元件中上下移動排序</b></h1>
+<select id='selList' size='7' style='width: 100px'>
+<option>Item 1</option>
+<option>Item 2</option>
+<option>Item 3</option>
+<option>Item 4</option>
+<option>Item 5</option>
+</select><br />
+<input type="button" value="▲" id="btnMoveUp" title="快速鍵: alt+向上" />
+<input type="button" value="▼" id="btnMoveDown" title="快速鍵: alt+向下"/>
+</body>
+</html>
