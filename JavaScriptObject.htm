@@ -1,0 +1,32 @@
+<html>
+  <head>
+    <title>test1</title>
+	<script type="text/javascript">
+	 var test = function(msg) {
+		if (msg) alert(msg);
+		else alert("test1");
+	 }
+	 
+	 var pop = {
+		popup:function() {
+			alert("pop1");
+		},
+		popup2:function() {
+			alert("pop2");
+		}
+	 }
+	 
+	 pop.popup3 = function() {
+		alert("pop3");
+	 }
+	
+	</script>
+  </head>
+  <body>
+    test1 demo  
+	<button id="test" name="test" onClick="test('ttt');">test1</button>
+	<button id="test" name="test" onClick="pop.popup();">test2</button>
+	<button id="test" name="test" onClick="pop.popup2();">test3</button>
+	<button id="test" name="test" onClick="pop.popup3();">test4</button>
+  </body>
+</html>
