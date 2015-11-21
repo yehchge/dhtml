@@ -1,0 +1,107 @@
+<html>
+<head>
+<title> 我的最愛 </title>
+<style type="text/css">
+<!--
+	#out{font-family:標楷體;font-size:40;background-color:blue;color:yellow}
+	.tree{font-family:標楷體;font-size:30;cursor:hand;background-color:#EAF0EA;color:black}
+	.tree3{font-family:標楷體;font-size:30;cursor:hand;background-color:#EAF0EA;color:black}
+	.highlight{font-family:標楷體;font-size:30;cursor:hand;background-color:#8FBC8F;color:white}
+	.highlight3{font-family:標楷體;font-size:30;cursor:hand;background-color:#8FBC8F;color:white}
+-->
+</style>
+</head>
+<body>
+<div id="root">
+	<table border=0 align=center>
+	<tr>
+	<td colspan=2>
+		<div id="out"><center>我的最愛</center></div>
+	</td>
+	<td>
+	</td>
+	</tr>
+	<tr>
+	<td>
+		<div class="tree" id="level1d" style="color:blue;background-color:yellow;cursor:default">國內網站</div>
+		<div class="tree" id="kimo" style="visibility:hidden">奇摩站</div>
+		<div class="tree" id="yam" style="visibility:hidden">蕃薯藤</div>
+		<div class="tree" id="sina" style="visibility:hidden">新浪網</div>
+        </td>
+	<td>
+		<div class="tree3" id="level2d" style="color:blue;background-color:yellow;cursor:default">國外網站</div>
+		<div class="tree3" id="msn" style="visibility:hidden">微軟</div>
+		<div class="tree3" id="sun" style="visibility:hidden">昇揚</div>
+		<div class="tree3" style="visibility:hidden">　　</div>  <!-- 避免置中 -->
+	</td>
+	</tr>
+	</table>
+</div>
+
+<script>
+<!--
+<!-- ========== 以下為連結至各網的網址 ============================= -->
+	function roll()
+	{
+	var site=event.srcElement.id;
+	var toUrl="";
+	switch(site)
+	   {
+		case "kimo":toUrl="http://www.kimo.com.tw";break;
+		case "yam" :toUrl="http://www.yam.com.tw";break;
+		case "sina":toUrl="http://www.sina.com.tw";break;
+		case "msn" :toUrl="http://msdn.microsoft.com/library/default.asp";break;
+		case "sun" :toUrl="http://java.sun.com/docs/books/tutorial/";break;
+		default:toUrl="";break;
+	   }
+	if(toUrl=="")			//此為判斷是否選到該選的視窗?!
+		{;}
+	else
+		{open(toUrl);}
+	}
+	root.onclick=roll;
+<!-- =========== 以下為移到國內外網站時要顯示的站名 ================ -->
+	function rollover()
+	{
+	var targetid,srcElement;
+	srcElement=window.event.srcElement;
+	if(srcElement.className=="tree")
+		{
+		kimo.style.visibility="visible";
+		yam.style.visibility="visible";
+		sina.style.visibility="visible";
+		}
+	else if(srcElement.className=="tree3") 
+		{
+		msn.style.visibility="visible";
+		sun.style.visibility="visible";
+		}
+	if(srcElement.className=="tree")
+		srcElement.className="highlight";
+	else if(srcElement.className=="tree3")
+		srcElement.className="highlight3";
+	}
+	root.onmouseover=rollover;
+<!-- =========== 以下為滑鼠移走時要隱藏的選單 ===================== -->
+	function rolltime()
+	{
+	srcElement=window.event.srcElement;
+	if(srcElement.className!="tree3" || srcElement.className!="tree")
+		{
+		kimo.style.visibility="hidden";
+		yam.style.visibility="hidden";
+		sina.style.visibility="hidden";
+		msn.style.visibility="hidden";
+		sun.style.visibility="hidden";
+		}
+	if(srcElement.className=="highlight")
+		srcElement.className="tree";
+	else if(srcElement.className=="highlight3")
+		srcElement.className="tree3";	
+	}
+	root.onmouseout=rolltime;
+<!-- ============================================================== -->
+//-->
+</script>
+</body>
+</html>

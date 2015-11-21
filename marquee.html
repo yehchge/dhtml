@@ -1,0 +1,336 @@
+<html>
+<head>
+<!-- ===================================================================================== -->
+<!-- 											   -->
+<!--        題目: 跑馬燈								   -->
+<!--        條件: 讓一物體像 "Marquee" 指令,有 SCROLL,SLIDE,ALTERNATE 這三種功能.	   -->
+<!--             畫面上有三個按鈕,為 SCROll . SLIDE . ALTERNATE , 選擇後依按鍵		   -->
+<!--             方式動作. 								   -->
+<!--        期限: 8/23 								      	   -->
+<!--                                                                                       -->
+<!-- ===================================================================================== -->	
+<title> 跑馬燈 </title>
+<script language="JavaScript">
+<!--
+	var movedir1=0;
+	var movedir=0;
+<!-- ===================================================================================== -->
+	// 此為 alternate 方式來回動作
+
+	function movealter()
+	{
+		if(movedir==0)
+		{
+			ball.style.pixelLeft+=10;
+			if(ball.style.pixelLeft>=(document.body.clientWidth-ball.clientWidth))
+				movedir=1;
+		}
+		else
+		{
+			ball.style.pixelLeft-=10;
+			if(ball.style.pixelLeft<=0)
+				movedir=0;
+		}
+	}
+<!-- ===================================================================================== -->
+	// 此為 scroll 方式捲動
+	function movescroll()
+	{	
+		ball.style.pixelLeft+=10;
+		if(ball.style.pixelLeft>=(document.body.clientWidth-ball.clientWidth))
+			ball.style.pixelLeft=0;
+	}	
+<!-- ===================================================================================== -->
+	// 此為 slide 滑動方式
+	function moveslide()
+	{	
+		if(ball.style.pixelLeft>=(document.body.clientWidth-ball.clientWidth))
+			clearInterval(timerid);
+		else
+			ball.style.pixelLeft+=10;
+	}	
+<!-- ===================================================================================== -->
+ 	function movefour()
+	{
+		if(movedir==0)
+		{
+			ball.style.pixelLeft+=10;
+			if(ball.style.pixelLeft>=(document.body.clientWidth-ball.clientWidth))
+				movedir=1;
+		}
+		else
+		{
+			ball.style.pixelLeft-=10;
+			if(ball.style.pixelLeft<=0)
+				movedir=0;
+		}
+		if(movedir1==0)
+		{
+			ball.style.pixelTop+=10;
+			if(ball.style.pixelTop>=(document.body.clientHeight-ball.clientHeight))
+				movedir1=1;
+		}
+		else
+		{
+			ball.style.pixelTop-=10;
+			if(ball.style.pixelTop<=0)
+				movedir1=0;	
+		}	
+	}
+<!-- ===================================================================================== -->
+ 	function movesquare()
+	{
+		if(movedir==0)
+		{
+			if(movedir1==0)
+	 		{
+				ball.style.pixelLeft+=10;
+				if(ball.style.pixelLeft>=(document.body.clientWidth-ball.clientWidth))
+					movedir=1;
+			}
+			else
+			{
+				ball.style.pixelTop-=10;
+				if(ball.style.pixelTop<=0)
+					movedir1=0;
+
+			}
+		}
+		else
+		{
+			if(movedir1==0)
+			{
+				ball.style.pixelTop+=10;
+				if(ball.style.pixelTop>(document.body.clientHeight-ball.clientHeight))
+					{movedir1=1;movedir=1;}
+			}
+			else
+			{
+				ball.style.pixelLeft-=10;
+				if(ball.style.pixelLeft<=0)
+					movedir=0;
+	
+			}
+		}
+	}
+<!-- ===================================================================================== -->
+	function moveup()
+	{	
+		if(ball.style.pixelTop<=0)
+			clearInterval(timerid);
+		else
+			ball.style.pixelTop-=10;
+	}	
+<!-- ===================================================================================== -->
+	function movedown()
+	{
+		if(ball.style.pixelTop>(document.body.clientHeight-ball.clientHeight))
+			clearInterval(timerid);
+		else
+			ball.style.pixelTop+=10;
+	}	
+<!-- ===================================================================================== -->
+	function moveleft()
+	{	
+		if(ball.style.pixelLeft<=0)
+			clearInterval(timerid);
+		else
+			ball.style.pixelLeft-=10;		
+	}	
+<!-- ===================================================================================== -->
+	function moveright()
+	{
+		if(ball.style.pixelLeft>=(document.body.clientWidth-ball.clientWidth))
+			clearInterval(timerid);
+		else
+			ball.style.pixelLeft+=10;		
+	}	
+<!-- ===================================================================================== -->
+//-->
+</script>
+</head>
+<body style="overflow:hidden">
+<img id="ball" style="position:absolute;top:200;" src="ball.bmp">
+
+<center>跑馬燈</center>
+<hr>
+請選擇以下方式:<br>
+<input type="button" name="run" value="SCROLL" onclick="scroll()">
+<input type="button" name="run" value="SLIDE" onclick="slide()">
+<input type="button" name="run" value="ALTERNATE" onclick="alternate()">
+<input type="button" name="run" value="FOUR" onclick="four()">
+<input type="button" name="run" value="SQUARE" onclick="square()"><br>
+<input type="button" name="run" value="up" onclick="up()">
+<input type="button" name="run" value="down" onclick="down()">
+<input type="button" name="run" value="left" onclick="left()">
+<input type="button" name="run" value="right" onclick="right()">
+<input type="button" name="run" value="stop" onclick="stop()">
+<input type="button" name="run" value="reset" onclick="reset()">
+
+<script>
+<!--
+<!-- ===================================================================================== -->
+var runalter=0;
+	function alternate()
+	{
+		if(runalter==1)
+		{
+			clearInterval(timerid); // 避免 setInterval 無法關閉
+			timerid=window.setInterval("movealter()",100);
+			runalter=1;
+		}
+		else
+		{
+			timerid=window.setInterval("movealter()",100);
+			runalter=1;
+		}
+	}
+<!-- ===================================================================================== -->
+	function scroll()
+	{
+		if(runalter==1)
+		{
+			clearInterval(timerid);
+			timerid=window.setInterval("movescroll()",100);
+			runalter=1;
+		}
+		else
+		{
+			timerid=window.setInterval("movescroll()",100);
+			runalter=1;
+		}
+	}
+<!-- ===================================================================================== -->
+	function slide()
+	{
+		if(runalter==1)
+		{
+			clearInterval(timerid);
+			timerid=window.setInterval("moveslide()",100);
+			runalter=1;
+		}
+		else
+		{
+			timerid=window.setInterval("moveslide()",100);
+			runalter=1;
+		}
+	}
+<!-- ===================================================================================== -->
+	function four()
+	{
+		if(runalter==1)
+		{
+			clearInterval(timerid); // 避免 setInterval 無法關閉
+			timerid=window.setInterval("movefour()",100);
+			runalter=1;
+		}
+		else
+		{
+			timerid=window.setInterval("movefour()",100);
+			runalter=1;
+		}
+	}
+<!-- ===================================================================================== -->
+	function square()
+	{
+		if(runalter==1)
+		{
+			clearInterval(timerid); // 避免 setInterval 無法關閉
+			timerid=window.setInterval("movesquare()",100);
+			runalter=1;
+		}
+		else
+		{
+			timerid=window.setInterval("movesquare()",100);
+			runalter=1;
+		}
+	}
+<!-- ===================================================================================== -->
+	function up()
+	{
+		if(runalter==1)
+		{
+			clearInterval(timerid); // 避免 setInterval 無法關閉
+			timerid=window.setInterval("moveup()",100);
+			runalter=1;
+		}
+		else
+		{
+			timerid=window.setInterval("moveup()",100);
+			runalter=1;
+		}
+	}
+<!-- ===================================================================================== -->
+	function down()
+	{
+		if(runalter==1)
+		{
+			clearInterval(timerid); // 避免 setInterval 無法關閉
+			timerid=window.setInterval("movedown()",100);
+			runalter=1;
+		}
+		else
+		{
+			timerid=window.setInterval("movedown()",100);
+			runalter=1;
+		}
+	}
+<!-- ===================================================================================== -->
+	function left()
+	{
+		if(runalter==1)
+		{
+			clearInterval(timerid); // 避免 setInterval 無法關閉
+			timerid=window.setInterval("moveleft()",100);
+			runalter=1;
+		}
+		else
+		{
+			timerid=window.setInterval("moveleft()",100);
+			runalter=1;
+		}
+	}
+<!-- ===================================================================================== -->
+	function right()
+	{
+		if(runalter==1)
+		{
+			clearInterval(timerid); // 避免 setInterval 無法關閉
+			timerid=window.setInterval("moveright()",100);
+			runalter=1;
+		}
+		else
+		{
+			timerid=window.setInterval("moveright()",100);
+			runalter=1;
+		}
+	}
+<!-- ===================================================================================== -->
+	function stop()
+	{
+		if(runalter==1)
+			clearInterval(timerid); // 避免 setInterval 無法關閉
+		else 
+		{;}
+	}
+<!-- ===================================================================================== -->
+	function reset()
+	{
+		if(runalter==1)
+		{
+			clearInterval(timerid); // 避免 setInterval 無法關閉
+			ball.style.pixelLeft=0;
+			ball.style.pixelTop=0;
+
+		}
+		else 
+		{
+			ball.style.pixelLeft=0;
+			ball.style.pixelTop=0;
+		}
+	}
+<!-- ===================================================================================== -->
+//-->
+</script>
+</body>
+</html>

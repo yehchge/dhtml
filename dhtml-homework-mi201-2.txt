@@ -1,0 +1,22 @@
+HTML Homework    (MI201)      
+注意事項:                          
+1. 8/23交. 
+2. 請依上課範例之樣式編寫(縮排, 換行, 對齊).
+3. 重點處加入註解.
+
+題目 
+
+1. 請於網頁上寫一個圖片跑馬燈程式, 運動方向為上下, 並做三個按鈕, 提供scroll, slide和alternate
+    三種移動形式的選擇. (參考範例marquee.htm)
+    
+2.	我的最愛
+      	國內網站  				國外網站
+	-------------------------			---------------------------------
+           	奇摩站(http://www.kimo.com.tw)		微軟(http://msdn.microsoft.com/library/default.asp)
+           	蕃薯藤(http://www.yam.com.tw)		昇陽(http://java.sun.com/docs/books/tutorial/)	
+           	新浪網(http://www.sina.com.tw)
+      
+   請為上面的連結製作一可隱藏展開之選單, 並於選單上點選後可連結至各網站.
+   (參考範例dynamicBar.htm, tree.htm)
+
+
