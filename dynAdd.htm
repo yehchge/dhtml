@@ -1,0 +1,21 @@
+<html>
+<head runat="server">
+<script language="javascript" type="text/javascript">
+    function dynamic()
+    {
+        var mydom = document.getElementById("divlist");
+        var ele = document.createElement("P");
+        var elevalue = document.createTextNode("this is created dynamically");
+        ele.appendChild(elevalue);
+        mydom.appendChild(ele);
+    }
+</script>
+</head>
+<body>
+    <form id="form1" runat="server">
+<input type="button" value="Dynamic Add" onclick="dynamic()" />
+    <div id="divlist">
+    </div>
+    </form>
+</body>
+</html>
