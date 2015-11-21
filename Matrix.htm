@@ -1,0 +1,27 @@
+<html>
+<title>Matrix</title>
+
+<body bgcolor="#000000" topmargin="0" leftmargin="0" style="margin:0px;overflow:hidden;">
+<center>
+<script>
+color=new Array("#78FF78", "#00C300", "#00FF00", "#3CFF3C", "#008F00", "#00E100", "#00A500", "#006900", "#3CFF3C", "#008F00", "#00C000", "#00FF00", "#8AFF78");
+w = screen.width/25
+h = screen.height
+for (i=0;i<w;i++) {
+s = Math.floor(Math.random() * 30) + 10;
+j = Math.floor(Math.random() * color.length);
+c = color[j];
+document.write ("<marquee scrollamount='"+s+"' direction='down' width='25' height='"+h+"'><b><font color='#"+c+"'>");
+n = Math.floor(Math.random() * 30);
+for (k=0;k<n;k++) {
+f = Math.floor(Math.random() * 24) + 3105;
+g = unescape("%u"+f);
+document.write (g+"<br>");
+}
+document.write ("</font></b></marquee>");
+}
+</script>
+</center>
+</body>
+
+</html> 
