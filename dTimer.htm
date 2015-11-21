@@ -1,0 +1,49 @@
+<html>
+<head>
+	<title>Dynamic Timer</title>
+
+	<script>
+	<!--	
+		var count=0;
+		var timerID;
+		function whatTime(){
+			var time=new Date();
+			var hour = time.getHours();	
+   			var minute = time.getMinutes();
+ 			var second = time.getSeconds();
+			var temp = ((hour > 12) ? hour - 12 : hour)
+  				+ ((minute < 10) ? ":0" : ":") + minute
+				+ ((second < 10) ? ":0" : ":") + second
+  				+ ((hour >= 12) ? " P.M." : " A.M.");
+			d1.innerHTML="<h3>" + temp + "</h3>";
+		}
+
+		function startTimer(){ 
+			if(count==0){
+				timerID = setInterval("whatTime()",1000);	//注意setInterval()用法, 1000millisec執行一次 
+				count=1;
+			}
+		}
+
+		function stopTimer(){
+			clearInterval(timerID);					//注意此停止做法,使用clearInterval()
+			count=0;
+		}
+	//-->
+	</script>
+	 
+</head>
+<body>
+	動態顯示時間<br>
+
+	<input type="button" value="停止" onclick="stopTimer()">
+	<input type="button" value="繼續" onclick="startTimer();">
+	<div id="d1"></div>
+
+	<script>
+	<!--
+		startTimer();
+	//-->
+	</script>	 
+</body>
+</html>
